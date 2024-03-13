@@ -1,6 +1,6 @@
-import EmptyCart from "@/components/empty-cart"
+import Confirmation from "@/components/confirmation"
 
 const EmptyCartPage = () => {
-    return <EmptyCart />
+    return <Confirmation imagePath="/bag.svg" heading="Your Bag is empty!" subheading="Add some items to proceed" buttonText="Add from watchlist" className="h-[50vh]" />
 }
 export default EmptyCartPage

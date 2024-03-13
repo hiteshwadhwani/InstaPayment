@@ -1,12 +1,22 @@
+'use client'
+
 import { OrderDetails } from "@/components/order-list";
+import useSWR from "swr";
 import { create } from "zustand";
 
-type OrderDetailsStore = {
+export type OrderDetailsStore = {
     data: OrderDetails | null;
-    setData: (data: OrderDetails) => void;
+    fetchData: () => void;
+
+    // setData: (data: OrderDetails) => void;
 };
 
-export const useOrderDetails = create<OrderDetailsStore>((set) => ({
+export const useOrderDetailsStore = create<OrderDetailsStore>((set) => ({
     data: null,
-    setData: (data: OrderDetails) => set({ data: data }),
+    fetchData: async () => {
+        const response = await fetch("https://groww-intern-assignment.vercel.app/v1/api/order-details", {cache: "force-cache"});
+        const data: OrderDetails = await response.json();
+        set({ data: data });
+    },
+    // setData: (data: OrderDetails) => set({ data: data }),
 }));

@@ -1,17 +1,12 @@
-import OrderListClient from "./orderlist-client";
-import Product from "./ui/product";
-import { redirect } from 'next/navigation'
+// import Product from "./ui/product";
+"use client";
 
-const getOrderDetails = async () => {
-    const response = await fetch(
-        "https://groww-intern-assignment.vercel.app/v1/api/order-details",
-    );
-    const data = await response.json();
-    return data;
-};
+import { useOrderDetails } from "@/providers/orderdetails-provider";
+import { redirect } from "next/navigation";
+import Orders from "./ui/orders";
 
 export type ProductType = {
-    id: number; 
+    id: number;
     title: string;
     price: number;
     image: string;
@@ -23,16 +18,15 @@ export type OrderDetails = {
     paymentMethods: string[];
 };
 
-export const revalidate = false
 
-const OrderList = async () => {
-    const orderDetails: OrderDetails = await getOrderDetails();
-    if(orderDetails.products.length === 0){
-        redirect("/empty-cart")
+const OrderList = () => {
+    const { data } = useOrderDetails();
+    if (data?.products.length === 0) {
+        redirect("/empty-cart");
     }
 
     return (
-        <OrderListClient orderDetails={orderDetails} />
+        <Orders heading="Items selected" page="checkout" />
     );
 };
 export default OrderList;

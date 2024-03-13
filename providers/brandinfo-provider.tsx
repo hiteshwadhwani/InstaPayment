@@ -13,7 +13,6 @@ export const BrandInfoContextProvider = (props: Props) => {
     const { data, fetchData } = useBrandInfoStore();
 
     useEffect(() => {
-        console.log("fetching");
         fetchData();
     }, [fetchData]);
 
