@@ -7,13 +7,14 @@ import Loading from "./ui/loading";
 const Pricing = () => {
     const { data: orderDetails } = useOrderDetails();
     const brandInfo = useBrandInfo();
-    if (!orderDetails || !brandInfo) {
+    if (!orderDetails || !brandInfo || orderDetails.products.length === 0) {
         return <Loading className="h-[207px]" />;
     }
 
     const prices = orderDetails.products.map((order) => order.price);
-    const total = prices.reduce((prev, curr) => prev + curr).toFixed(2);
+    const total = prices.reduce((prev, curr) => prev + curr)
     const delivery = 40
+    const totalAmount = total + delivery
     return (
         <div className="w-full p-[24px] space-y-4 border border-[#F4F4F5]">
             <h2 className="font-semibold text-[12px] text-[#3F3F46] uppercase">
@@ -22,15 +23,15 @@ const Pricing = () => {
 
             <div className="text-[#71717A] text-[12px] flex flex-row justify-between">
                 <p>Total MRP</p>
-                <p>&#8377; {total}</p>
+                <p>&#8377; {total.toFixed(2)}</p>
             </div>
             <div className="text-[#71717A] text-[12px] flex flex-row justify-between">
                 <p>Delivery Fee</p>
-                <p>&#8377; {delivery}</p>
+                <p>&#8377; {delivery.toFixed(2)}</p>
             </div>
             <div className="text-[#3F3F46] text-[14px] flex flex-row font-bold justify-between">
                 <p>Total Amount</p>
-                <p>&#8377; {total + delivery}</p>
+                <p>&#8377; {totalAmount.toFixed(2)}</p>
             </div>
         </div>
     );

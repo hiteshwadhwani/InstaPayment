@@ -10,7 +10,7 @@ type OrderListClientProps = {
 }
 
 const OrderListClient = ({orderDetails}: OrderListClientProps) => {
-    const {setData} = useOrderDetails()
+    const {data, setData} = useOrderDetails()
     
     useEffect(() => {
         setData(orderDetails)

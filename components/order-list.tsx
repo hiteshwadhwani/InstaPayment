@@ -1,5 +1,6 @@
 import OrderListClient from "./orderlist-client";
 import Product from "./ui/product";
+import { redirect } from 'next/navigation'
 
 const getOrderDetails = async () => {
     const response = await fetch(
@@ -22,8 +23,13 @@ export type OrderDetails = {
     paymentMethods: string[];
 };
 
+export const revalidate = false
+
 const OrderList = async () => {
     const orderDetails: OrderDetails = await getOrderDetails();
+    if(orderDetails.products.length === 0){
+        redirect("/empty-cart")
+    }
 
     return (
         <OrderListClient orderDetails={orderDetails} />

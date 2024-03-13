@@ -13,7 +13,7 @@ const Loading = () => {
 const CheckoutPage = () => {
     return (
         <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] md:w-[80%] mx-auto my-8 space-x-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] md:w-[80%] mx-auto my-8 space-y-4 md:space-y-0 md:space-x-4">
                 <Suspense fallback={<Loading />}>
                     <OrderList />
                 </Suspense>
