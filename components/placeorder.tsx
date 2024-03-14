@@ -1,6 +1,6 @@
 'use client'
 
-import { useBrandInfo } from "@/providers/brandinfo-provider"
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import Loading from "./ui/loading"
 import { Button } from "./ui/button"
 import { ArrowRight } from "lucide-react"

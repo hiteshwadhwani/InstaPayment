@@ -1,21 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { ProductType } from "../order-list";
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { ProductType, useOrderDetails, useOrderDetailsStore } from "@/hooks/orderdetails-hook";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import { Button } from "./button";
+import { cn } from "@/lib/utilts";
 
 type ProductProps = {
     product: ProductType;
     imageDisable: boolean;
     removeDisable: boolean;
+    lastItem: boolean
 };
 
-const Product = ({ product, imageDisable, removeDisable }: ProductProps) => {
+const Product = ({ product, imageDisable, removeDisable, lastItem }: ProductProps) => {
     const brandInfo = useBrandInfo();
+    const {removeProduct} = useOrderDetailsStore()
     const title = product.title.split(" ").slice(0, 2).join(" ");
     return (
-        <div className="min-h-[113px] py-[24px]  flex flex-row justify-between border-b border-[#F4F4F5]">
+        <div className={cn("min-h-[113px] py-[24px]  flex flex-row justify-between", !lastItem && "border-b border-[#F4F4F5]")}>
             <div className="flex flex-row items-center">
                 {!imageDisable && (
                     <Image
@@ -49,6 +52,7 @@ const Product = ({ product, imageDisable, removeDisable }: ProductProps) => {
                         style={{ color: brandInfo?.theme["--primary"] }}
                         className="uppercase font-semibold text-[12px] border-none"
                         variant={"link"}
+                        onClick={() => removeProduct(product.id)}
                     >
                         Remove
                     </Button>

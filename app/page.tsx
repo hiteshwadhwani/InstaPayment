@@ -1,7 +1,7 @@
 'use client'
 
 import DarkmodeToggle from "@/components/ui/darkmode-toggle";
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 
 export default function Home() {
   const data = useBrandInfo()

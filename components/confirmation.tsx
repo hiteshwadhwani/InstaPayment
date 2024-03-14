@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Button } from "./ui/button"
-import { useBrandInfo } from "@/providers/brandinfo-provider"
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import { cn } from "@/lib/utilts"
 
 type ConfirmationProps = {

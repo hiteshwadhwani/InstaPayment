@@ -1,3 +1,7 @@
+"use client"
+
+import { BrandInfoContext } from "@/providers/brandinfo-provider";
+import { useContext } from "react";
 import { create } from "zustand";
 
 export type BrandInfo = {
@@ -26,3 +30,9 @@ export const useBrandInfoStore = create<BrandInfoStore>((set) => ({
         set({ data: data, loading: false });
     },
 }));
+
+export const useBrandInfo = () => {
+    const data = useContext(BrandInfoContext);
+    return data;
+};
+

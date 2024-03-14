@@ -1,8 +1,8 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import { OrderStatus } from "@/types";
-import { getRandomValue } from "@/utilts";
+import { getRandomValue } from "@/lib/utilts";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Input } from "../ui/input";

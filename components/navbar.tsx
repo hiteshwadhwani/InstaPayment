@@ -1,6 +1,5 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
 import Logo from "./ui/logo";
 import ProgressBar from "./progress-bar";
 import DarkmodeToggle from "./ui/darkmode-toggle";

@@ -1,8 +1,8 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import Loading from "./ui/loading";
-import { useOrderDetails } from "@/providers/orderdetails-provider";
+import { useOrderDetails } from "@/hooks/orderdetails-hook"
 
 const Pricing = () => {
     const { data: orderDetails } = useOrderDetails();

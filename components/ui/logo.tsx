@@ -1,6 +1,6 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import Image from "next/image";
 import Loading2 from "./loading2";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import { Button } from "./ui/button";
 import Loading from "./ui/loading";
 

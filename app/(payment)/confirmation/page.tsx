@@ -1,6 +1,5 @@
 import Confirmation from "@/components/confirmation";
 import Orders from "@/components/ui/orders";
-import ConfirmationClient from "./confirmationClient";
 
 const data = {
     success: {

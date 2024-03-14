@@ -1,11 +1,11 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { getRandomValue } from "@/utilts";
+import { getRandomValue } from "@/lib/utilts";
 import { OrderStatus } from "@/types";
 
 type CardInfo = {

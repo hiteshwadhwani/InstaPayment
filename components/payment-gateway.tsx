@@ -1,11 +1,8 @@
 "use client";
 
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import { useState } from "react";
-import { Input } from "./ui/input";
 import { cn } from "@/lib/utilts";
-import { Button } from "./ui/button";
-import { useRouter } from "next/router";
 import CardPayment from "./paymet/card-payment";
 import UpiPayment from "./paymet/upi-payment";
 import CodPayment from "./paymet/cod-payment";

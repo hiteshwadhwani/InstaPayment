@@ -18,8 +18,3 @@ export const BrandInfoContextProvider = (props: Props) => {
 
     return <BrandInfoContext.Provider value={data} {...props} />;
 };
-
-export const useBrandInfo = () => {
-    const data = useContext(BrandInfoContext);
-    return data;
-};

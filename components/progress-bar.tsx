@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utilts";
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 

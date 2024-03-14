@@ -2,7 +2,7 @@
 
 import { BadgePercent } from "lucide-react";
 import { Button } from "./ui/button";
-import { useBrandInfo } from "@/providers/brandinfo-provider";
+import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import Loading from "./ui/loading";
 
 const Coupon = () => {
