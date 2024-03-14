@@ -18,7 +18,7 @@ const CheckoutPage = () => {
                     <OrderList />
                 </Suspense>
                 <div className="space-y-3">
-                    <AddressBox />
+                    <AddressBox page="checkout" />
                     <Coupon />
                     <Pricing />
                     <PlaceorderButton />
