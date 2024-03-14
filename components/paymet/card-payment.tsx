@@ -7,6 +7,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { getRandomValue } from "@/lib/utilts";
 import { OrderStatus } from "@/types";
+import { useTheme } from "next-themes";
 
 type CardInfo = {
     cardNumber: string;
@@ -15,9 +16,10 @@ type CardInfo = {
     cvv: string;
 };
 
-const CardPayment = () => {
+const CardPayment = ({ disabled }: { disabled?: boolean }) => {
     const router = useRouter();
     const brandInfo = useBrandInfo();
+    const { theme } = useTheme();
     const randomStatus = getRandomValue(OrderStatus);
     const [errors, setErrors] = useState<Partial<CardInfo>>({}); // Partial for optional error types
     const [formData, setFormData] = useState<CardInfo>({
@@ -78,7 +80,15 @@ const CardPayment = () => {
     };
     return (
         <div className="py-[14px] px-[24px]">
-            <h2 className="mb-4 font-semibold text-[#3F3F46] text-[12px]">
+            <h2
+                style={{
+                    color:
+                        theme === "light"
+                            ? brandInfo?.theme["--background"]
+                            : brandInfo?.theme["--foreground"],
+                }}
+                className="mb-4 font-semibold text-[#3F3F46] text-[12px]"
+            >
                 Pay Using Credit/Debit Card
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -87,7 +97,7 @@ const CardPayment = () => {
                     name="cardNumber"
                     value={formData.cardNumber}
                     onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px]  border-[#D4D4D8] shadow-none rounded-[2px]"
+                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px]  border-[#D4D4D8] dark:border-[#494949] shadow-none rounded-[2px]"
                 />
                 {errors.cardNumber && (
                     <div className="text-xs text-red-600">
@@ -99,7 +109,7 @@ const CardPayment = () => {
                     name="nameOnCard"
                     value={formData.nameOnCard}
                     onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
+                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] dark:border-[#494949] shadow-none"
                 />
                 {errors.nameOnCard && (
                     <div className="text-xs text-red-600">
@@ -113,7 +123,7 @@ const CardPayment = () => {
                             name="validThru"
                             value={formData.validThru}
                             onChange={handleChange}
-                            className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
+                            className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] dark:border-[#494949] shadow-none"
                         />
                         {errors.validThru && (
                             <div className="text-xs text-red-600">
@@ -127,7 +137,7 @@ const CardPayment = () => {
                             name="cvv"
                             value={formData.cvv}
                             onChange={handleChange}
-                            className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
+                            className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] dark:border-[#494949] shadow-none"
                         />
                         {errors.cvv && (
                             <div className="text-xs text-red-600">
@@ -141,9 +151,15 @@ const CardPayment = () => {
                     type="submit"
                     className="uppercase text-white text-[12px] font-bold"
                     style={{ backgroundColor: brandInfo?.theme["--primary"] }}
+                    disabled={disabled}
                 >
                     Pay now
                 </Button>
+                {disabled && (
+                    <p className="text-xs mt-2 text-rose-600">
+                        Disabled by seller
+                    </p>
+                )}
             </form>
         </div>
     );
