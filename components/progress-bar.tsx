@@ -14,7 +14,7 @@ const ProgressBar = () => {
     const brandInfo = useBrandInfo();
     const progressParam = path[path.length - 1];
     return (
-        <div className="flex flex-row gap-x-2">
+        <div className="flex flex-row gap-x-2 items-center">
             <p
                 style={{
                     color:

@@ -11,7 +11,11 @@ const themeIcon = {
     light: <Sun className="h-4 w-4" />,
 };
 
-const DarkmodeToggle = () => {
+type DarkmodeToggleProps = {
+    className?: string
+}
+
+const DarkmodeToggle = ({className} : DarkmodeToggleProps) => {
     const [mounted, setMounted] = useState(false);
     const { setTheme, resolvedTheme } = useTheme();
 
@@ -30,6 +34,6 @@ const DarkmodeToggle = () => {
 
     if (!mounted) return null
 
-    return <Button size={'icon'} onClick={(() => toggle())}>{resolvedTheme && themeIcon[resolvedTheme as "dark" | "light"]}</Button>;
+    return <Button className={className} size={'icon'} onClick={(() => toggle())}>{resolvedTheme && themeIcon[resolvedTheme as "dark" | "light"]}</Button>;
 };
 export default DarkmodeToggle;
