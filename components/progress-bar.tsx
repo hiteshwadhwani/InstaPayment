@@ -2,6 +2,7 @@ import { cn } from "@/lib/utilts";
 import { useBrandInfo } from "@/hooks/brandinfo-hook"
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 enum progress {
     ADDRESS = "Address",
@@ -31,7 +32,7 @@ const ProgressBar = () => {
                 {progress.ADDRESS}
             </p>
             <Image src={"/dash.svg"} alt="dash image" height={10} width={50} />
-            <p
+            <Link
                 style={{
                     color:
                         progressParam === progress.CHECKOUT.toLowerCase()
@@ -43,9 +44,11 @@ const ProgressBar = () => {
                     progressParam === progress.CHECKOUT.toLowerCase() &&
                         "font-semibold"
                 )}
+                href={"/checkout"}
+
             >
                 {progress.CHECKOUT}
-            </p>
+            </Link>
             <Image src={"/dash.svg"} alt="dash image" height={10} width={50} />
             <p
                 style={{

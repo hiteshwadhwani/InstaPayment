@@ -1,6 +1,6 @@
 "use client";
 
-import { useBrandInfo } from "@/hooks/brandinfo-hook"
+import { useBrandInfo } from "@/hooks/brandinfo-hook";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
@@ -18,7 +18,7 @@ type CardInfo = {
 const CardPayment = () => {
     const router = useRouter();
     const brandInfo = useBrandInfo();
-    const randomStatus = getRandomValue(OrderStatus)
+    const randomStatus = getRandomValue(OrderStatus);
     const [errors, setErrors] = useState<Partial<CardInfo>>({}); // Partial for optional error types
     const [formData, setFormData] = useState<CardInfo>({
         cardNumber: "",
@@ -78,14 +78,16 @@ const CardPayment = () => {
     };
     return (
         <div className="py-[14px] px-[24px]">
-            <h2 className="mb-4 font-semibold text-[#3F3F46] text-[12px]">Pay Using Credit/Debit Card</h2>
+            <h2 className="mb-4 font-semibold text-[#3F3F46] text-[12px]">
+                Pay Using Credit/Debit Card
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                     placeholder="Card Number"
                     name="cardNumber"
                     value={formData.cardNumber}
                     onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-none border-[#D4D4D8] shadow-none"
+                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px]  border-[#D4D4D8] shadow-none rounded-[2px]"
                 />
                 {errors.cardNumber && (
                     <div className="text-xs text-red-600">
@@ -97,35 +99,44 @@ const CardPayment = () => {
                     name="nameOnCard"
                     value={formData.nameOnCard}
                     onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-none border-[#D4D4D8] shadow-none"
+                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
                 />
                 {errors.nameOnCard && (
                     <div className="text-xs text-red-600">
                         {errors.nameOnCard}
                     </div>
                 )}
-                <Input
-                    placeholder="Valid Thru (MM/YY)"
-                    name="validThru"
-                    value={formData.validThru}
-                    onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-none border-[#D4D4D8] shadow-none"
-                />
-                {errors.validThru && (
-                    <div className="text-xs text-red-600">
-                        {errors.validThru}
+                <div className="grid grid-cols-3 space-x-4">
+                    <div className="col-span-2">
+                        <Input
+                            placeholder="Valid Thru (MM/YY)"
+                            name="validThru"
+                            value={formData.validThru}
+                            onChange={handleChange}
+                            className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
+                        />
+                        {errors.validThru && (
+                            <div className="text-xs text-red-600">
+                                {errors.validThru}
+                            </div>
+                        )}
                     </div>
-                )}
-                <Input
-                    placeholder="CVV"
-                    name="cvv"
-                    value={formData.cvv}
-                    onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-none border-[#D4D4D8] shadow-none"
-                />
-                {errors.cvv && (
-                    <div className="text-xs text-red-600">{errors.cvv}</div>
-                )}
+                    <div>
+                        <Input
+                            placeholder="CVV"
+                            name="cvv"
+                            value={formData.cvv}
+                            onChange={handleChange}
+                            className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
+                        />
+                        {errors.cvv && (
+                            <div className="text-xs text-red-600">
+                                {errors.cvv}
+                            </div>
+                        )}
+                    </div>
+                </div>
+
                 <Button
                     type="submit"
                     className="uppercase text-white text-[12px] font-bold"
@@ -137,4 +148,4 @@ const CardPayment = () => {
         </div>
     );
 };
-export default CardPayment
+export default CardPayment;

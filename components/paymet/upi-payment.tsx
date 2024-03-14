@@ -68,7 +68,7 @@ const UpiPayment = () => {
                     name="upi_id"
                     value={formData.upi_id}
                     onChange={handleChange}
-                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-none border-[#D4D4D8] shadow-none"
+                    className="placeholder:text-[#D4D4D8] placeholder:text-[10px] rounded-[2px] border-[#D4D4D8] shadow-none"
                 />
                 {errors.upi_id && (
                     <div className="text-xs text-red-600">

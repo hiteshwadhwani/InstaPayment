@@ -16,7 +16,7 @@ const Pricing = () => {
     const delivery = 40
     const totalAmount = total + delivery
     return (
-        <div className="w-full p-[24px] space-y-4 border border-[#F4F4F5] h-fit">
+        <div className="w-full p-[24px] space-y-4 border border-[#F4F4F5] h-fit rounded-[8px]">
             <h2 className="font-semibold text-[12px] text-[#3F3F46] uppercase">
                 price details
             </h2>

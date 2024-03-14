@@ -65,7 +65,7 @@ const PaymentScreen = ({ value }: { value: PaymentOptions }) => {
 const PaymentGateway = () => {
     const [payment, setPayment] = useState(PaymentOptions.UPI);
     return (
-        <div className="border border-[#F4F4F5] flex flex-col min-h-[400px]">
+        <div className="border border-[#F4F4F5] flex flex-col min-h-[400px] rounded-[8px]">
             <div className="uppercase font-semibold text-[12px] py-[20px] px-[24px] border-b border-[#F4F4F5]">
                 Choose Payment Method
             </div>
